@@ -13,7 +13,7 @@ const Features = ({ cards = [1, 2, 3] }) => {
             cards.map((card) => {
               return (
                 <div class="mx-auto flex items-center justify-center gap-10 px-6 py-5">
-                  <ul class="border-green-600 hover:border-green-400 hover:bg-green-600 group flex-1 -skew-x-[30deg] transform border">
+                  <ul class="border-green-600 hover:border-green-400 hover:bg-green-600 group flex-1 -skew-x-[16deg] transform border">
                     <Link to={`/categories/${card}`} class="m-4 skew-x-[30deg] transform bg-transparent px-20 text-center first-letter:uppercase">
                       <h3 class="block text-lg group-hover:text-white px-16 font-bold">{card || "Example card"}</h3>
                     </Link>
