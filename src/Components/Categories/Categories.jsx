@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+
 import Features from "../Features"
 
 const Categories = () => {
@@ -13,11 +14,11 @@ const Categories = () => {
     fetchGategories()
   }, [])
 
-  if(categories.length === 0) return <main>Loading ...</main> 
+  if (categories.length === 0) return <main>Loading ...</main>
 
   return (
     <main>
-      <Features cards={categories}/>
+      <Features cards={categories} />
     </main>
   )
 }

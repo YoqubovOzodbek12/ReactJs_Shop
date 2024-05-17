@@ -1,23 +1,23 @@
 import { useEffect, useState } from "react"
-import { Link , useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 const Cart = () => {
 
     const navigate = useNavigate()
-    const [total,setTotal] = useState(0)
+    const [total, setTotal] = useState(0)
     const carts = JSON.parse(localStorage.getItem('cart')) || [];
 
 
     useEffect(() => {
-        const total = carts.reduce((acc,item) => {
+        const total = carts.reduce((acc, item) => {
             return acc + (item?.price * item?.quantity)
-        },0)
+        }, 0)
         setTotal(total)
-    },[carts])
+    }, [carts])
 
     const handleInc = (id) => {
         const updateCart = carts.map(item => {
-            if(item.id == id) {
+            if (item.id == id) {
                 return {
                     ...item,
                     quantity: item.quantity + 1
@@ -31,10 +31,10 @@ const Cart = () => {
 
     const handleDec = (id) => {
         const updatedCart = carts.map(item => {
-            if(item.id == id) {
+            if (item.id == id) {
                 return {
                     ...item,
-                    quantity: item.quantity >1 ? item.quantity - 1 : 0
+                    quantity: item.quantity > 1 ? item.quantity - 1 : 0
                 }
             }
             return item
@@ -45,8 +45,8 @@ const Cart = () => {
 
     const removeProduct = (id) => {
         console.log(id)
-        const updateCart = carts.filter(item => item.id !== id) 
-        localStorage.setItem('cart',JSON.stringify(updateCart))
+        const updateCart = carts.filter(item => item.id !== id)
+        localStorage.setItem('cart', JSON.stringify(updateCart))
         navigate('/cart')
     }
 
@@ -83,7 +83,7 @@ const Cart = () => {
                                 return (
                                     <div
                                         className="flex flex-col min-[500px]:flex-row min-[500px]:items-center gap-5 py-6  border-b border-gray-200 group">
-                                            
+
                                         <div className="w-full md:max-w-[126px]">
                                             <img src={cart?.image} alt={cart?.title}
                                                 className="mx-auto" />
@@ -91,12 +91,12 @@ const Cart = () => {
                                         <div className="grid grid-cols-1 md:grid-cols-4 w-full">
                                             <div className="md:col-span-2">
                                                 <div className="flex flex-col max-[500px]:items-center gap-3">
-                                                    <h6 className="font-semibold text-base leading-7 text-black">{cart?.title.slice(0,10)}</h6>
+                                                    <h6 className="font-semibold text-base leading-7 text-black">{cart?.title.slice(0, 10)}</h6>
                                                     <h6 className="font-normal text-base leading-7 text-gray-500">{cart?.category}</h6>
                                                     <h6 className="font-medium text-base leading-7 text-gray-600 transition-all duration-300 ">$ {cart?.price}</h6>
 
-                                                    <p className="font-normal text-base leading-7 text-gray-500 cursor-pointer hover:text-lime-600"  
-                                                    onClick={() => removeProduct(cart?.id)}>Remove</p>
+                                                    <p className="font-normal text-base leading-7 text-gray-500 cursor-pointer hover:text-lime-600"
+                                                        onClick={() => removeProduct(cart?.id)}>Remove</p>
                                                 </div>
                                             </div>
                                             <div className="flex items-center max-[500px]:justify-center h-full max-md:mt-3">
@@ -133,7 +133,7 @@ const Cart = () => {
                                                 </div>
                                             </div>
                                             <div className="flex items-center max-[500px]:justify-center md:justify-end max-md:mt-3 h-full">
-                                                <p className="font-bold text-lg leading-8 text-gray-600 text-center transition-all duration-300 group-hover:text-indigo-600">$ {(cart?.price  * cart?.quantity).toFixed(2)}</p>
+                                                <p className="font-bold text-lg leading-8 text-gray-600 text-center transition-all duration-300 group-hover:text-indigo-600">$ {(cart?.price * cart?.quantity).toFixed(2)}</p>
                                             </div>
                                         </div>
                                     </div>

@@ -22,7 +22,7 @@ const CategoriesProducts = () => {
       {/* <ProductCard products={products}/> */}
 
       {products.length !== 0 ? <ProductCard products={products} /> : "Loading ..."}
-      
+
     </main>
   )
 }

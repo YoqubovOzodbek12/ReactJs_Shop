@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-const ProductCard = ({products = []}) => {
+const ProductCard = ({ products = [] }) => {
 
 
   return (
@@ -9,7 +9,7 @@ const ProductCard = ({products = []}) => {
         <div className="flex flex-wrap -m-4">
           {
             products.map((product) => {
-              const {id, title, price, description,category,image} = product
+              const { id, title, price, description, category, image } = product
               return (
                 <Link key={id} to={`/products/${id}`} className="lg:w-1/4 md:w-1/2 p-4 w-full border border-opacity-50 mb-4 cursor-pointer">
                   <a className="block relative h-48 rounded overflow-hidden">
